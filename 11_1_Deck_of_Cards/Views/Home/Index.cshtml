@@ -1,0 +1,33 @@
+﻿
+@model CardResponse;
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+<div class="text-center">
+    <h1 class="display-4">Cards!</h1>
+   <h2> Deck @Model.deck_id</h2>
+   <h3> Cards Remaining: @Model.remaining</h3>
+
+  
+    
+   
+
+@{ List<Card> hand = Model.cards.ToList<Card>();}
+    @foreach(Card C in hand)
+    {
+        <img src="@C.image" />
+    }
+
+
+        
+
+
+        <form method = "get" asp-action="Draw">
+            <input type="hidden" name="dID" value="@Model.deck_id" />
+            <button type="submit" name="drawNum" value="1">Draw 1</button><button type="submit" name="drawNum" value="2">Draw 2</button><button type="submit" name="drawNum" value="3">Draw 3</button><button type="submit" name="drawNum" value="4">Draw 4</button><button type="submit" name="drawNum" value="5">Draw 5</button>
+        </form>
+
+    </div>
+
